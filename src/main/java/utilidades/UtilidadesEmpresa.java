@@ -4,10 +4,7 @@ import modelos.Empleado;
 import modelos.Empresa;
 import modelos.TipoContrato;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class UtilidadesEmpresa {
 
@@ -48,14 +45,43 @@ public class UtilidadesEmpresa {
         Empleado mejorPagado;
         List<Empleado> pagados = new ArrayList<>();
         for (Empresa empresa : empresas){
-            for (Empleado empleado : empresa.getEmpleados()){
-                pagados.add(empleado);
-            }
+            pagados.addAll(empresa.getEmpleados());
         }
         pagados.sort(Comparator.comparing(e -> e.getContrato().getSalarioBase()));
         mejorPagado = pagados.get(0);
         return mejorPagado;
     }
+
+//    public Map<TipoContrato, List<Empleado>>
+//    getEmpleadosPorTipoContrato(Empresa empresas){
+//
+//        Map<TipoContrato, List<Empleado>> empleadosPorContrato = new HashMap<>();
+//        empleadosPorContrato.put(TipoContrato.PRACTICAS, new ArrayList<>());
+//        empleadosPorContrato.put(TipoContrato.TEMPORAL, new ArrayList<>());
+//        empleadosPorContrato.put(TipoContrato.OBRAYSERVICIO, new ArrayList<>());
+//        empleadosPorContrato.put(TipoContrato.INDEFINIDO, new ArrayList<>());
+//
+//        for(Empleado empleado : empresas.getEmpleados()){
+//            switch (empleado.getContrato()){
+//                case PRACTICAS -> empleadosPorContrato.get(TipoContrato.PRACTICAS).add(empleado);
+//
+//
+//            }
+//        }
+//
+//
+//
+////        for(TipoContrato tipoContrato: empresas.getEmpleados()){
+////
+////            empleadosPorContrato.put(tipoContrato, new ArrayList<>());
+////        }
+////
+////        for()
+//
+//
+//        return empleadosPorContrato;
+//    }
+
 
 }
 
