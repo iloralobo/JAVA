@@ -1,5 +1,6 @@
 package utilidades;
 
+import modelos.Cliente;
 import modelos.Factura;
 import modelos.LineaFactura;
 
@@ -34,6 +35,16 @@ public class UtilidadesFactura {
         totalAPagar += (calcularBaseFactura(factura)-factura.getDescuento())*factura.getIva();
 
         return totalAPagar;
+    }
+
+    public Double gastoTotalCliente(List<Factura> facturas, Cliente cliente){
+        double importeTotal = 0.0;
+        for (Factura factura : facturas){
+            if (factura.getCliente().equals(cliente)){
+                importeTotal += factura.getTotalAPagar();
+            }
+        }
+        return importeTotal;
     }
 
 }
